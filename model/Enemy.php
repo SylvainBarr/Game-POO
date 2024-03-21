@@ -2,18 +2,43 @@
 
 require_once('model/EnemyInterface.php');
 
-class Enemy implements EnemyInterface {
+class Enemy implements CharacterInterface {
 
     // Properties
 
+    private int $level;
     private int $life;
     private int $strength;
     private int $intell;
     private int $defense;
+    private int $barrier;
     private int $speed;
+    private int $type; // 0 = fighter, 1 = mage, 2 = rogue/archer
 
 
     // Getters and Setters
+
+    /**
+     * Get the value of level
+     *
+     * @return int
+     */
+    public function getLevel(): int
+    {
+        return $this->level;
+    }
+
+    /**
+     * Set the value of level
+     *
+     * @param int $level
+     *
+     * @return void
+     */
+    public function setLevel(int $level): void
+    {
+        $this->level = $level;
+    }
     
 
     /**
@@ -105,6 +130,28 @@ class Enemy implements EnemyInterface {
     }
 
     /**
+     * Get the value of barrier
+     *
+     * @return int
+     */
+    public function getBarrier(): int
+    {
+        return $this->barrier;
+    }
+
+    /**
+     * Set the value of barrier
+     *
+     * @param int $barrier
+     *
+     * @return void
+     */
+    public function setBarrier(int $barrier): void
+    {
+        $this->barrier = $barrier;
+    }
+
+    /**
      * Get the value of speed
      *
      * @return int
@@ -127,14 +174,65 @@ class Enemy implements EnemyInterface {
     }
 
 
+    /**
+     * Get the value of type
+     *
+     * @return int
+     */
+    public function getType(): int
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set the value of type
+     *
+     * @param int $type
+     *
+     * @return void
+     */
+    public function setType(int $type): void
+    {
+        $this->type = $type;
+    }
+
     // Contructor
     
-    public function __construct(int $life, int $strength, int $intell, int $defense, int $speed)
+    public function __construct(int $type, int $level)
     {
+        if($type == 0){
+            $life = intval(100 + ($level * 15));
+            $strength = intval(10 + ($level * 2));
+            $intell = intval(6 + ($level * 1));
+            $defense = intval(10 + ($level * 2));
+            $barrier = intval(6 + ($level * 1));
+            $speed = intval(6 + ($level * 1));
+        } elseif($type == 1) {
+            $life = intval(80 + ($level * 8));
+            $strength = intval(6 + ($level * 1));
+            $intell = intval(10 + ($level * 2));
+            $defense = intval(6 + ($level * 1));
+            $barrier = intval(10 + ($level * 2));
+            $speed = intval(6 + ($level * 1));
+        } elseif($type == 2) {
+            $life = intval(80 + ($level * 8));
+            $strength = intval(10 + ($level * 2));
+            $intell = intval(10 + ($level * 2));
+            $defense = intval(6 + ($level * 1));
+            $barrier = intval(6 + ($level * 1));
+            $speed = intval(10 + ($level * 2));
+        }
+        $this->setLevel($level);
         $this->setLife($life);
         $this->setStrength($strength);
         $this->setIntell($intell);
         $this->setDefense($defense);
+        $this->setBarrier($barrier);
         $this->setSpeed($speed);
+        $this->setType($type);
     }
+
+    
+
+
 }
