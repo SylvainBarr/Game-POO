@@ -7,12 +7,12 @@ require_once('view/header.php');
 
 if(!empty($_GET['page'])) {
     if($_GET['page'] == 'create-character'){
-        require_once('view/characterCreation.php');
+        require_once('controller/CharacterCreationController.php');
     } elseif($_GET['page'] == ''){
-        require_once('view/');
+        require_once('controller/');
     }
 } else {
-    require_once('view/characterCreation.php');
+    require_once('controller/CharacterCreationController.php');
 }
 
 
