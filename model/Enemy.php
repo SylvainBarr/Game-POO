@@ -1,6 +1,6 @@
 <?php
 
-require_once('model/EnemyInterface.php');
+require_once('model/CharacterInterface.php');
 
 class Enemy implements CharacterInterface {
 

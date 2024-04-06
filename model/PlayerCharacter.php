@@ -1,6 +1,6 @@
 <?php
 
-require_once('model/EnemyInterface.php');
+require_once('model/CharacterInterface.php');
 
 class PlayerCharacter implements CharacterInterface {
 
@@ -8,6 +8,7 @@ class PlayerCharacter implements CharacterInterface {
 
     private int $level;
     private int $life;
+    private int $maxLife;
     private int $strength;
     private int $intell;
     private int $defense;
@@ -64,6 +65,28 @@ class PlayerCharacter implements CharacterInterface {
     public function setLife(int $life): void
     {
         $this->life = $life;
+    }
+
+    /**
+     * Get the value of maxlife
+     *
+     * @return int
+     */
+    public function getMaxLife(): int
+    {
+        return $this->maxLife;
+    }
+
+    /**
+     * Set the value of maxlife
+     *
+     * @param int $maxlife
+     *
+     * @return void
+     */
+    public function setMaxLife(int $maxlife): void
+    {
+        $this->maxLife = $maxlife;
     }
 
     /**
@@ -287,13 +310,14 @@ class PlayerCharacter implements CharacterInterface {
         } elseif($type == 2) {
             $life = 80;
             $strength = 10;
-            $intell = 10;
+            $intell = 6;
             $defense = 6;
             $barrier = 6;
             $speed = 10;
         }
         $this->setLevel(1);
         $this->setLife($life);
+        $this->setMaxLife($life);
         $this->setStrength($strength);
         $this->setIntell($intell);
         $this->setDefense($defense);
