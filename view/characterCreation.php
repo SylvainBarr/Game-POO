@@ -24,17 +24,45 @@ ob_start();
     </h1>
 
     <p>Level : <?=$player->getLevel()?></p>
-    <p>Life : <?=$player->getLife()?> / <?=$player->getMaxLife()?></p>
-    <p>Strength : <?=$player->getStrength()?></p>
-    <p>Intell : <?=$player->getIntell()?></p>
-    <p>Defense : <?=$player->getDefense()?></p>
-    <p>Barrier : <?=$player->getBarrier()?></p>
-    <p>Speed : <?=$player->getSpeed()?></p>
+    <p>
+        <button class="statsChangeButton" data-stat="life" data-value="<?=$player->getMaxLife()?>">-</button>
+         Life : <span id="life"><?=$player->getLife()?></span> / <span id="maxLife"><?=$player->getMaxLife()?></span> 
+        <button class="statsChangeButton" data-stat="life" data-value="<?=$player->getMaxLife()?>">+</button>
+    </p> 
+    <p>
+        <button class="statsChangeButton" data-stat="strength" data-value="<?=$player->getStrength()?>">-</button>
+         Strength : <span id="str"><?=$player->getStrength()?></span>
+        <button class="statsChangeButton" data-stat="strength" data-value="<?=$player->getStrength()?>">+</button>
+    </p>
+    <p>
+        <button class="statsChangeButton" data-stat="intell" data-value="<?=$player->getIntell()?>">-</button>
+        Intell : <span id="int"><?=$player->getIntell()?></span>
+        <button class="statsChangeButton" data-stat="intell" data-value="<?=$player->getIntell()?>">+</button>
+    </p>
+    <p>
+        <button class="statsChangeButton" data-stat="defense" data-value="<?=$player->getDefense()?>">-</button>
+        Defense : <span id="def"><?=$player->getDefense()?></span>
+        <button class="statsChangeButton" data-stat="defense" data-value="<?=$player->getDefense()?>">+</button>
+    </p>
+    <p>
+        <button class="statsChangeButton" data-stat="barrier" data-value="<?=$player->getBarrier()?>">-</button>
+        Barrier : <span id="bar"><?=$player->getBarrier()?></span>
+        <button class="statsChangeButton" data-stat="barrier" data-value="<?=$player->getBarrier()?>">+</button>
+    </p>
+    <p>
+        <button class="statsChangeButton" data-stat="speed" data-value="<?=$player->getSpeed()?>">-</button>
+        Speed : <span id="spe"><?=$player->getSpeed()?></span>
+        <button class="statsChangeButton" data-stat="speed" data-value="<?=$player->getSpeed()?>">+</button>
+    </p>
     <p>Experience : <?=$player->getExperience()?> / <?=$player->getNextLevelExp()?></p>
     <br>
-    <p>Stats points available : <?=$player->getStatPoints()?></p>
+    <p>Stats points available : <span id="poi"><?=$player->getStatPoints()?></span></p>
+</div>
+<div id="saveDiv">
+    <button id="saveButton">Save new stats</button>
 </div>
 
+<script src="assets/js/characterUpdate.js"></script>
 
 <?php
 $content = ob_get_clean();

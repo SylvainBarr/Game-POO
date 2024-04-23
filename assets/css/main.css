@@ -10,3 +10,7 @@
 .card-container {
     width: 500px;
 }
+
+#saveDiv {
+    display: none;
+}
