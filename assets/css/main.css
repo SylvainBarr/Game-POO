@@ -1,0 +1,16 @@
+.class-card-img {
+    width: 200px;
+    height: 500px;
+}
+
+.class-card-text {
+    max-width: 300px;
+}
+
+.card-container {
+    width: 500px;
+}
+
+#saveDiv {
+    display: none;
+}
