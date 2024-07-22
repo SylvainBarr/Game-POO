@@ -22,6 +22,8 @@ ob_start();
 
     ?>
     </h1>
+    <input name="type" type="hidden" id="type" value="<?=$player->getType()?>"/>
+    <input name="level" type="hidden" id="level" value="<?=$player->getLevel()?>"/>
 
     <p>Level : <?=$player->getLevel()?></p>
     <p>

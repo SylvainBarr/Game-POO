@@ -118,16 +118,36 @@ document.addEventListener('DOMContentLoaded', function () {
         saveDiv.style.display = "block";
         document.querySelector("#saveButton").addEventListener("click", event => {
             event.preventDefault();
+            console.log('saving');
+            let characterToSave = getCharacterInfos();
+
+            // Async request 
+            // TODO :: CORRECT THE URL WITHOUT THE FOLDER NAME WHEN DEPLOY
+            fetch(`/Game - POO/assets/ajax/characterSave.php`, {
+                method: 'POST',
+                headers: { 'Content-type': 'application/json' },
+                body: JSON.stringify(characterToSave),
+            })
+            .then(response => response.json())
+            .then(responseData => {
+                if (responseData.status === 'success') {
+                    // définir l'action à réaliser
+                    console.log('save done');
+                } else {
+                    alert("Failed to save Character data.");
+                }
+            })
+            .catch(error => console.error('Error: ', error));
 
 
             //
-            // try catch vers fichier php ajax A FAIRE
+            // try catch vers fichier php ajax A FINIR
             //
 
 
 
 
-        })
+        });
     }
 
     // hide the save button when points removed
@@ -142,6 +162,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // return all the initial Character stats before any update
     function getCharacterInfos() {
         let newCharacterInfos = new Object();
+        newCharacterInfos.type = parseInt(document.querySelector('#type').value);
+        newCharacterInfos.type = parseInt(document.querySelector('#level').value);
         newCharacterInfos.life = parseInt(document.querySelector('#life').textContent);
         newCharacterInfos.maxLife = parseInt(document.querySelector('#maxLife').textContent);
         newCharacterInfos.strength = parseInt(document.querySelector('#str').textContent);
