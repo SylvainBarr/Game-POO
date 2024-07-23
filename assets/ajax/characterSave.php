@@ -1,6 +1,6 @@
 <?php
 
-require_once('../../model/PlayerCharacter.php');
+// require_once(__DIR__.'/../../model/PlayerCharacter.php');
 
 // reading the posted data
 $data = file_get_contents('php://input');
